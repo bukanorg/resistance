@@ -6,3 +6,6 @@ git push heroku main
 
 deploying branch:
 git push heroku branch_name:main
+
+scaling app:
+heroku ps:scale web=NUMBER
