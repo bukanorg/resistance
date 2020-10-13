@@ -1,0 +1,2 @@
+to switch to different app name/container for deployment
+heroku git:remote -a APP_NAME
