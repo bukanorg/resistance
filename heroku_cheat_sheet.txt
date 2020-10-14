@@ -1,0 +1,17 @@
+to switch to different app name/container for deployment:
+heroku git:remote -a APP_NAME
+
+deploying heroku app:
+git push heroku main
+
+deploying branch:
+git push heroku branch_name:main
+
+scaling app:
+heroku ps:scale web=NUMBER
+
+run shell on local:
+python manage.py shell
+
+run shell on heroku:
+heroku run python manage.py shell
