@@ -9,3 +9,9 @@ git push heroku branch_name:main
 
 scaling app:
 heroku ps:scale web=NUMBER
+
+run shell on local:
+python manage.py shell
+
+run shell on heroku:
+heroku run python manage.py shell
