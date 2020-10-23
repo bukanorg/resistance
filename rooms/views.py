@@ -113,3 +113,8 @@ def lobby(request):
     return response
 
 
+def waiting_room(request):
+    player = get_player(request)
+    return render(request, 'rooms/waiting_room.html', {'player': player})
+
+

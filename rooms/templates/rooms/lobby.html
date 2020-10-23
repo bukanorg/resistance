@@ -1,1 +1,9 @@
 <h1>Welcome player {{ player.player_id }} to otaresistance</h1>
+<form action="{% url 'rooms:waiting_room' %}" method="get">
+  <label for="roomnumber">Room number:</label>
+  <input type="text" id="roomnumber" name="roomnumber">
+  <input type="submit" value="Join">
+</form>
+<form action="{% url 'rooms:waiting_room' %}" method="get">
+  <input type="submit" value="Create New Room">
+</form>
