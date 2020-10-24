@@ -100,7 +100,7 @@ def join_room(request, room_id):
 def room(request):
     player = get_player(request)
     room = rooms[player.room_id]
-    print('l4:')
+    print('l4s:')
 
 
 def lobby(request):
