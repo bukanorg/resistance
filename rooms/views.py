@@ -1,6 +1,8 @@
-import random, time
-from django.shortcuts import render
+import random
+import time
 
+from django.http import HttpResponse
+from django.shortcuts import render
 
 from .models import Room, Player
 
@@ -24,14 +26,12 @@ def generate_id():
 
 def get_player(request):
     player = None
-    session_id = request.COOKIES.get(SESSION_ID)
-    if session_id is not None:
-        if session_id in sessions:
-            player_id = sessions[session_id]
-            if player_id is not None:
-                if player_id in players:
-                    player = players[player_id]
-                    player.keep_active()
+    if 'player_id' in request.session:
+        player_id = request.session['player_id']
+        if player_id is not None:
+            if player_id in players:
+                player = players[player_id]
+                player.keep_active()
     return player
 
 
@@ -100,16 +100,18 @@ def join_room(request, room_id):
 def room(request):
     player = get_player(request)
     room = rooms[player.room_id]
-    print('l')
+    print('l4:')
 
 
 def lobby(request):
     player = get_player(request)
 
     response = render(request, 'rooms/lobby.html', {'player': player})
+
     if player is None:
         player = create_player()
-        sessions.update({str(request.COOKIES.get(SESSION_ID)): player.player_id})
+        request.session['player_id'] = player.player_id
+        #sessions.update({str(request.COOKIES.get(SESSION_ID)): player.player_id})
     return response
 
 
